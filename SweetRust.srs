@@ -1,0 +1,61 @@
+use std::env;
+use std::fs::File;
+use std::error::Error; // description
+use std::io::prelude::*; // read_to_string
+
+fn main():
+  let args: Vec<String> = env::args().collect();
+  if args.len()!=2 { println!( "It needs one argument - srs file name" ); return; }
+
+  let mut file = match File::open( &args[1] ):
+    Err(why) => panic!( "couldn't open {}: {}", args[1], why.description() ),
+    Ok(file) => file
+
+  let mut s = String::new();
+  match file.read_to_string( &mut s ):
+    Err(why) => panic!( "couldn't read {}: {}", args[1], why.description()),
+    Ok(_) => {}
+
+  let mut stk: Vec<usize> = Vec::new(); // indents
+  let mut stk2: Vec<bool> = Vec::new(); // ';' flags
+
+  for line in s.lines():
+    let body = line.trim_left();        // line without indent
+    let ind = line.len() - body.len();
+    let bodylen:usize;
+    let comment:String;
+    let comment_pos = body.find("//");
+    // w/o full parser, it's hard to process '//' inside strings correctly --
+    // there'll be errors in lines ending with ':'; so let's split the code
+    match comment_pos:
+      Some(pos) => { bodylen = pos; comment = body[pos..].to_string(); },
+      None => { bodylen = body.len(); comment = String::new(); }
+    let text = &body[..bodylen];  // all or till comment (but incl. blanks)
+    let stmt = text.trim_right(); // all or w/o blanks and comment
+    if stmt.len()==0: // no code
+      if comment.len()==0 { println!(); }
+      else { println!( "{:w$}{}", "", comment, w=ind ); }
+      continue;
+
+    while stk.len()>0 && ind <= stk[stk.len()-1]:
+      let cls = stk.pop().unwrap();
+      let cls2 = stk2.pop().unwrap();
+      if cls2 { println!( "{:>1$}", "};", cls+2 ); }
+      else    { println!( "{:>1$}", "}", cls+1 ); }
+
+    if stmt.ends_with(":") && !stmt.starts_with("'"):
+      stk.push( ind );
+      stk2.push( body.starts_with("let ") );
+      if comment.len()==0:
+        println!( "{:w$}{}", "", &stmt[..stmt.len()-1], w=ind );
+      else:
+        println!( "{:w$}{} {}", "", &stmt[..stmt.len()-1], &comment, w=ind );
+      println!( "{:>1$}", "{", ind+1 );
+    else:
+      println!( "{}", line );
+
+  while stk.len()>0:
+    let cls = stk.pop().unwrap();
+    let cls2 = stk2.pop().unwrap();
+    if cls2 { println!( "{:>1$}", "};", cls+2 ); }
+    else    { println!( "{:>1$}", "}", cls+1 ); }
