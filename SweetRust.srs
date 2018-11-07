@@ -45,7 +45,7 @@ fn main():
 
     if stmt.ends_with(":") && !stmt.starts_with("'"):
       stk.push( ind );
-      stk2.push( body.starts_with("let ") );
+      stk2.push( body.starts_with("let ") ); // TODO: also assignment
       if comment.len()==0:
         println!( "{:w$}{}", "", &stmt[..stmt.len()-1], w=ind );
       else:
