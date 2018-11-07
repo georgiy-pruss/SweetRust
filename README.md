@@ -1,7 +1,7 @@
 # SweetRust *(Rust with indents)*
 Making Rust sweet (and more powerful) — now Python (CoffeeScript, Nim, Occam, Yaml) people can use it too
 
-This adds the possibility to use indention blocks in Rust, the same way they exist in Python -- when you end a line with a colon, it means you start a block, and that block ends when the indention comes back to initial level. In the output, the closing curly bracket will be alone on a line, except when the indentation was started with `let` (e.g. there goes an expression with match), then the block ends with `};`. Probably this should include all the cases when the line doesn't start with `if`, `for`, etc. Even better, some lexical analysis can be used -- now strings are not parsed and comments are processed in only one case -- one line comment after the colon. So this project can develop...
+This adds the possibility to use indention blocks in Rust, the same way they exist in Python -- when you end a line with a colon, it means you start a block, and that block ends when the indention comes back to initial level. In the output, the closing curly brace will be alone on a line, except when the indentation was started with `let` (e.g. there goes an expression with match), then the block ends with `};`. Probably this should include all the cases when the line doesn't start with `if`, `for`, etc. Even better, some lexical analysis can be used -- now strings are not parsed and comments are processed in only one case -- one line comment after the colon. So this project can develop...
 
 For input file aaa.srs, the output will be in aaa_srs.rs, which will be compiled to aaa.exe.
 
