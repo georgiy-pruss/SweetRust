@@ -7,8 +7,10 @@ This adds indention blocks to Rust, the same way they exist in Python -- when yo
 
 2) Run these commands to associate the srs extension:
 
+    ```
     assoc .srs=SweetRust.File
     ftype SweetRust.File="C:\BIN\srs.bat" "%L" %*
+    ```
 
 3) Run rustsrs.reg to set the icon to srs files;
 
