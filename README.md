@@ -5,6 +5,8 @@ This adds the possibility to use indention blocks in Rust, the same way they exi
 
 For input file aaa.srs, the output will be in aaa_srs.rs, which will be compiled to aaa.exe.
 
+## Installation
+
 1) Copy srs.bat and SweetRust.exe (build it form SweetRust.rs) to your bin directory (mine is D:\BIN);
 
 2) Run these commands to associate the srs extension:
@@ -24,6 +26,8 @@ For input file aaa.srs, the output will be in aaa_srs.rs, which will be compiled
       \ imap <F5> <ESC>:w<CR>:!srs.bat <C-R>=expand("%:t")<CR><CR>
     autocmd BufNewFile,BufRead *.toml map <F5> :w<CR>:!cargo build <C-R>=expand("%:t")<CR><CR><CR>
     ```
+
+## Usage
 
 Now you can compile and run srs file:
 
