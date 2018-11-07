@@ -40,6 +40,6 @@ Compile with optimization and run:
 
 ## Bugs/Issues
 
-A block can't be started with multi-line statement/construction, like `fn foo(... /* many parameters on several lines */ ...):`.
+* A block can't be started with multi-line statement/construction, like `fn foo(... /* many parameters on several lines */ ...):`.
 
-The text is not split into tokens, so comments, strings -- they all can easily confuse the program.
+* The text is not split into tokens, so comments, strings -- they all can easily confuse the program.
