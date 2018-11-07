@@ -5,6 +5,8 @@ This adds the possibility to use indention blocks in Rust, the same way they exi
 
 For input file aaa.srs, the output will be in aaa_srs.rs, which will be compiled to aaa.exe.
 
+SweetRust.rs is actually a slightly edited result of SweetRust.srs. Compare them and you'll see what's all this is about.
+
 ## Installation
 
 1) Copy srs.bat and SweetRust.exe (build it form SweetRust.rs) to your bin directory (mine is D:\BIN);
