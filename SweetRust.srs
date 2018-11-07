@@ -59,3 +59,5 @@ fn main():
     let cls2 = stk2.pop().unwrap();
     if cls2 { println!( "{:>1$}", "};", cls+2 ); }
     else    { println!( "{:>1$}", "}", cls+1 ); }
+
+// vim: syntax=rust
