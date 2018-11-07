@@ -24,8 +24,7 @@ SweetRust.rs is actually a slightly edited result of SweetRust.srs. Compare them
 
     ```
     autocmd BufNewFile,BufRead *.rs map <F5> :w<CR>:!rustc <C-R>=expand("%:t")<CR><CR><CR>
-    autocmd BufNewFile,BufRead *.srs map <F5> :w<CR>:!srs.bat <C-R>=expand("%:t")<CR><CR><CR>|
-      \ imap <F5> <ESC>:w<CR>:!srs.bat <C-R>=expand("%:t")<CR><CR>
+    autocmd BufNewFile,BufRead *.srs map <F5> :w<CR>:!srs.bat <C-R>=expand("%:t")<CR><CR><CR>
     autocmd BufNewFile,BufRead *.toml map <F5> :w<CR>:!cargo build <C-R>=expand("%:t")<CR><CR><CR>
     ```
 
