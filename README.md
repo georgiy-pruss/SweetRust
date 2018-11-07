@@ -6,6 +6,7 @@ This adds indention blocks to Rust, the same way they exist in Python -- when yo
 1) Copy srs.bat and SweetRust.exe (build it form SweetRust.rs) to your bin directory (mine is D:\BIN);
 
 2) Run these commands to associate the srs extension:
+
     assoc .srs=SweetRust.File
     ftype SweetRust.File="C:\BIN\srs.bat" "%L" %*
 
